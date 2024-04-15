@@ -1,1 +1,3 @@
-Для запуска Backend необходимо выполнить команду: npx nx serve api
+Для запуска Backend необходимо выполнить команду: 
+- npm install
+- npx nx serve api
