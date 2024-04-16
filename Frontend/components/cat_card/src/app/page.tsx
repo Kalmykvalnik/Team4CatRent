@@ -1,4 +1,5 @@
 import HeartIcon from "@/components/HeartIcon";
+import Header from "@/components/header";
 
 const name = "Кардинал"
 
@@ -22,14 +23,15 @@ const characteristics2 = [
   "Обработан от паразитов"
 ]
 
-const myComponentList = characteristics2.map((obj: any) => (
-  <li>{obj}</li>
+const myComponentList = characteristics2.map((obj: any, index) => (
+  <li key={index}>{obj}</li>
 ));
 
 
 export default function Home() {
   return (
     <main className="">
+      <Header></Header>
       <div className="flex h-screen justify-center ">
         <div className="p-6 border-solid border-2 border-black mx-8 w-3/5 h-min">
           <div className="flex items-start gap-8">
@@ -37,7 +39,7 @@ export default function Home() {
               alt="Cat"
               className="aspect-square rounded-lg object-cover border dark:border-gray-800 flex-1"
               height={305}
-              src="https://avatars.mds.yandex.net/i?id=3f8cff41185438aff3ae0d5ac9566f58_l-5234292-images-thumbs&n=13"
+              src="@/images/placeholder.png"
               width={381}
             />
             <div className="grid gap-8 text-sm flex-1 ">
