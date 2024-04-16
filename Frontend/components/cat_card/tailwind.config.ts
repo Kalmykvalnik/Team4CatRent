@@ -21,7 +21,7 @@ const config: Config = {
   daisyui : {
     themes : [
       {
-        mttheme : {
+        mytheme : {
 
         }
       }

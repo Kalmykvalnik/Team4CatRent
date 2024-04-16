@@ -13,12 +13,26 @@ const characteristics = {
 
 const cost = 500
 
+const characteristics2 = [
+  "Возраст ~ 3 года",
+  "Кот",
+  "Добрый",
+  "Среднешерстный",
+  "Спокойный",
+  "Обработан от паразитов"
+]
+
+const myComponentList = characteristics2.map((obj: any) => (
+  <li>{obj}</li>
+));
+
+
 export default function Home() {
   return (
     <main className="">
       <div className="flex h-screen justify-center ">
         <div className="p-6 border-solid border-2 border-black mx-8 w-3/5 h-min">
-          <div className="flex items-start gap-6">
+          <div className="flex items-start gap-8">
             <img
               alt="Cat"
               className="aspect-square rounded-lg object-cover border dark:border-gray-800 flex-1"
@@ -28,13 +42,8 @@ export default function Home() {
             />
             <div className="grid gap-8 text-sm flex-1 ">
               <h2 className="font-semibold text-lg text-center">{name}</h2>
-              <ul className="grid grid-cols-1 gap-2 text-sm text-tertiary marker:text-2xl list-image-checkmark">
-                <li className="font-medium">{characteristics[1]}</li>
-                <li className="font-medium">{characteristics[2]}</li>
-                <li className="font-medium">{characteristics[3]}</li>
-                <li className="font-medium">{characteristics[4]}</li>
-                <li className="font-medium">{characteristics[5]}</li>
-                <li className="font-medium">{characteristics[6]}</li>
+              <ul className="grid grid-cols-1 gap-1 text-sm text-tertiary marker:text-2xl list-disc">
+                {myComponentList}
               </ul>
             </div>
           </div>
