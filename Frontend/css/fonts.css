@@ -2,12 +2,13 @@
     font-family: 'Mada';
     src: url('/Frontend/fonts/Mada/Mada-Regular.ttf') format('TrueType');
     font-weight: normal;
-    font-style: normal;   
+    font-style: normal;     
 }
 
 @font-face {
     font-family: 'Mada';
-    src: url('/Frontend/fonts/Mada/Mada-Regular.ttf') format('TrueType');
+    src: url('/Frontend/fonts/Mada/Mada-Bold.ttf') format('TrueType');
     font-weight: bold;
     font-style: normal;   
 }
+
