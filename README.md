@@ -5,4 +5,4 @@
 4. Выполнить команды
 - npm ci
 - npx nx serve api
-   
+
