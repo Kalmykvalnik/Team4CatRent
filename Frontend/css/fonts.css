@@ -1,13 +1,13 @@
 @font-face {
     font-family: 'Mada';
-    src: url('../fonts/Mada/Mada-Regular.ttf') format('ttf');
+    src: url('/Frontend/fonts/Mada/Mada-Regular.ttf') format('TrueType');
     font-weight: normal;
     font-style: normal;   
 }
 
 @font-face {
     font-family: 'Mada';
-    src: url('../fonts/Mada/Mada-Bold.ttf') format('ttf');
+    src: url('/Frontend/fonts/Mada/Mada-Regular.ttf') format('TrueType');
     font-weight: bold;
     font-style: normal;   
 }
