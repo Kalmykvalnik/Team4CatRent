@@ -2,8 +2,6 @@ import HeartIcon from "@/components/common/heartIcon"
 import cardinal from "@images/cardinal.png"
 import Image from 'next/image';
 
-
-
 const name = "Кардинал"
 
 const characteristics = {
@@ -31,9 +29,9 @@ const myComponentList = characteristics2.map((obj: any, index) => (
 ));
 
 
-export default function Content() {
+export default function CatCard() {
   return (
-    <div>
+    <div className="bg-white">
       <div className="flex  justify-center m-6">
         <div className="p-6 border-solid border-2 border-black mx-8 w-3/5 h-min">
           <div className="flex items-start gap-8">

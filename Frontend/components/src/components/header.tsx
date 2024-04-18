@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export default function Header(props: any) {
   return (
-    <div className="p-2 ">
+    <div className="p-2 bg-white">
       <div className="flex gap-0">
         <div className="">
           <Image width={49} height={40} className="" src={logo} alt="logo" />
