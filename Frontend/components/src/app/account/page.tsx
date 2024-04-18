@@ -1,11 +1,11 @@
-export default function Home() {
+export default function Account() {
   return (
     <main className=" bg-white">
       <div className="">
-        <div className="flex h-screen justify-center ">
+        <div className="flex h-screen justify-center">
           <div>
             <p>
-              здесь будет контент главной страницы
+              здесь будет личный кабинет пользователя
             </p>
           </div>
         </div>
