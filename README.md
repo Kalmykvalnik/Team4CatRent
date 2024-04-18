@@ -5,6 +5,8 @@
 4. Выполнить команды
 - npm ci
 - npx nx serve api
+ 
+Agafonov commit
 
 **Для запуска Frontend необходимо:**
 1. Установить компоненты Next.js командой 'npm install' в папке components
