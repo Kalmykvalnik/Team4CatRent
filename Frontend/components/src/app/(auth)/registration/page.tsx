@@ -1,11 +1,11 @@
-export default function Home() {
+export default function Registration() {
   return (
     <main className=" bg-white">
       <div className="">
-        <div className="flex h-screen justify-center ">
+        <div className="flex h-screen justify-center">
           <div>
             <p>
-              здесь будет контент главной страницы
+              здесь будет регистрация пользователя
             </p>
           </div>
         </div>

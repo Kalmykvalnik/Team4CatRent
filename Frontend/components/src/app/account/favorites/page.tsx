@@ -1,11 +1,11 @@
-export default function Home() {
+export default function Favorites() {
   return (
     <main className=" bg-white">
       <div className="">
-        <div className="flex h-screen justify-center ">
+        <div className="flex h-screen justify-center">
           <div>
             <p>
-              здесь будет контент главной страницы
+              здесь будет избранное пользователя
             </p>
           </div>
         </div>
