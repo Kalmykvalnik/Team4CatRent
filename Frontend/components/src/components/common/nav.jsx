@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 export default function Nav() {
-  return <nav>
+  return <nav className="items-center flex">
     <div className="flex gap-14 justify-center ">
       <Link href="/" className="hover:underline">Главная</Link>
       <Link href="/catalog/" className="hover:underline">Каталог</Link>

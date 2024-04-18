@@ -8,8 +8,8 @@ import Link from "next/link"
 export default function Header(props: any) {
   return (
     <div className="p-2 bg-white">
-      <div className="flex gap-0 justify-between">
-        <div className="">
+      <div className="flex gap-0 justify-between items-center">
+        <div className="flex">
           <Image width={49} height={40} className="" src={logo} alt="logo" />
         </div>
         <Nav></Nav>
