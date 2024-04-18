@@ -5,7 +5,7 @@ export default function News() {
         <div className="flex h-screen justify-center">
           <div>
             <p>
-              здесь будут новости
+              здесь будут новости.
             </p>
           </div>
         </div>
