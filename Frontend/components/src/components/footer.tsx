@@ -9,7 +9,7 @@ export default function Footer(props: any) {
         <Image height={90} className="footer__logo bg-transparent" src={logo} alt="logo" />
       </div>
         <Nav></Nav>
-      <div className="footer__address w-1/6 text-center">ООО «Котики на дом»<br />+7 (777) 777-77-77<br />г. Москва</div>
+      <div className="footer__address w-1/ text-center">ООО «Котики на дом»<br />+7 (777) 777-77-77<br />г. Москва</div>
     </div>
   )
 }
