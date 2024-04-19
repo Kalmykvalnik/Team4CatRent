@@ -1,5 +1,4 @@
 import logo from "@images/logo.jpg"
-import banner from "@images/banner.jpg"
 import Image from 'next/image'
 import Nav from './common/nav'
 import Link from "next/link"
@@ -14,9 +13,6 @@ export default function Header(props: any) {
         </div>
         <Nav></Nav>
         <Link href="/login/" className="hover:underline w-24">Вход</Link>
-      </div>
-      <div className="gap-4">
-        <Image className="object-cover w-full" src={banner} alt="banner" />
       </div>
     </div>
   )
