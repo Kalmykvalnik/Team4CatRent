@@ -9,8 +9,8 @@
 Agafonov commit
 
 **Для запуска Frontend необходимо:**
-1. Установить компоненты Next.js командой 'npm install' в папке components
-2. Выполнить команду 'npm run dev' в папке components
+1. Установить необходимые компоненты командой 'npm install' в папке Frontend
+2. Выполнить команду 'npm run dev' в папке Frontend
 3. Приложение будет доступно в dev режиме по localhost:3000
 
 **Для создания БД необходимо:**
