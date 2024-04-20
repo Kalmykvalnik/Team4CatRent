@@ -12,7 +12,10 @@
    JWT_SECRET=
 
    NODE_ENV=
- 
+
+6. Для запуска **Basket** сервиса необходимо зайти в папку Backend/service/basket и выполнить там команды:
+   - `npm ci`
+   - `npx nx serve basket-api`
 
 **Для запуска Frontend необходимо:**
 1. Установить необходимые компоненты командой 'npm install' в папке Frontend
