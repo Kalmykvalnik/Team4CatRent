@@ -1,6 +1,6 @@
 **Для запуска Backend необходимо:** 
 1. Установить Node.js по ссылке https://nodejs.org/en/download/current
-2. Установить RabbitMQ по ссылке https://www.rabbitmq.com/. Стандартный логин и пароль для входа в rabbiqmq guest/guest. Адрес - http://localhost:15672/
+2. Установить RabbitMQ по ссылке https://www.rabbitmq.com/. Стандартный логин и пароль для входа в rabbitmq guest/guest. Адрес - http://localhost:15672/
 3. Перезагрузить компьютер
 4. В терминале перейти в папку .\Backend (команда `cd .\Backend`)
 5. Выполнить команды
