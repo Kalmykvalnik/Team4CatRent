@@ -1,6 +1,8 @@
+'use client'
+
 import HeartIcon from "@/components/common/heartIcon"
-import cardinal from "@images/cardinal.png"
-import Image from 'next/image';
+
+import Gallery from '@/components/slider'
 
 const name = "Кардинал"
 
@@ -14,15 +16,6 @@ const characteristics = [
 ]
 
 const cost = 500
-
-const characteristics2 = [
-  "Возраст ~ 3 года",
-  "Кот",
-  "Добрый",
-  "Среднешерстный",
-  "Спокойный",
-  "Обработан от паразитов"
-]
 
 const description = {
   description :"Наш Кардинал — кот широкой души. А это значит, он готов стать для своего человека всем. Лучшим другом. Лучшим помощником и вдохновителем. Лучшим антистрессом и антихмурином."
@@ -39,13 +32,9 @@ export default function CatCard() {
       <div className="flex  justify-center m-6">
         <div className="p-6 border-solid border-2 border-black mx-8 w-3/5 h-min">
           <div className="flex items-start gap-8">
-            <Image
-              alt="Cat"
-              className="aspect-square rounded-lg object-cover border dark:border-gray-800 flex-1"
-              height={305}
-              src={cardinal}
-              width={381}
-            />
+            <div>
+              {Gallery()}
+            </div>
             <div className="grid gap-8 text-sm flex-1 ">
               <h2 className="font-semibold text-lg text-center">{name}</h2>
               <ul className="grid grid-cols-1 gap-3 text-sm text-tertiary marker:text-2xl">
