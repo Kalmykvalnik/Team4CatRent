@@ -4,14 +4,14 @@ import Image from 'next/image';
 
 const name = "Кардинал"
 
-const characteristics = {
-  1: "Возраст ~ 3 года",
-  2: "Кот",
-  3: "Добрый",
-  4: "Среднешерстный",
-  5: "Спокойный",
-  6: "Обработан от паразитов"
-}
+const characteristics = [
+  {par: "Возраст ~ 3 года"},
+  {par: "Кот"},
+  {par: "Добрый"},
+  {par: "Среднешерстный"},
+  {par: "Спокойный"},
+  {par: "Обработан от паразитов"}
+]
 
 const cost = 500
 
@@ -24,8 +24,12 @@ const characteristics2 = [
   "Обработан от паразитов"
 ]
 
-const myComponentList = characteristics2.map((obj: any, index) => (
-  <li key={index}>✓ {obj}</li>
+const description = {
+  description :"Наш Кардинал — кот широкой души. А это значит, он готов стать для своего человека всем. Лучшим другом. Лучшим помощником и вдохновителем. Лучшим антистрессом и антихмурином."
+}
+
+const myComponentList = characteristics.map((obj: any, index) => (
+  <li key={index}>✓ {obj.par}</li>
 ));
 
 
@@ -51,7 +55,7 @@ export default function CatCard() {
           </div>
           <div className="grid gap-8 text-sm leading-loose py-6">
             <p >
-              Наш Кардинал — кот широкой души. А это значит, он готов стать для своего человека всем. Лучшим другом. Лучшим помощником и вдохновителем. Лучшим антистрессом и антихмурином.
+              {description.description}
             </p>
           </div>
           <form className="grid gap-4 md:gap-0 items-start border-solid bg-blue-300 rounded-lg p-2 shadow-xl">
