@@ -1,8 +1,6 @@
-'use client'
-
 import HeartIcon from "@/components/common/heartIcon"
 
-import Gallery from '@/components/slider'
+import Gallery from '@/components/common/slider'
 
 const name = "Кардинал"
 
@@ -28,12 +26,12 @@ const myComponentList = characteristics.map((obj: any, index) => (
 
 export default function CatCard() {
   return (
-    <div className="bg-white">
+    <div className="bg-white h-screen">
       <div className="flex  justify-center m-6">
         <div className="p-6 border-solid border-2 border-black mx-8 w-3/5 h-min">
           <div className="flex items-start gap-8">
-            <div>
-              {Gallery()}
+            <div className="h-full">
+              <Gallery></Gallery>
             </div>
             <div className="grid gap-8 text-sm flex-1 ">
               <h2 className="font-semibold text-lg text-center">{name}</h2>
