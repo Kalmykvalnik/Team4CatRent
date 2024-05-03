@@ -40,7 +40,7 @@ const Carousel = ({ catsShortInfo }: props) => {
               <div className='flex p-2 justify-items-center'>
                 <Image src={cat.imgPrew} alt="cat_photo" height={230} width={287} className='flex object-cover min-h-[230px]'></Image>
               </div>
-              <div className='flex max-w-[156px]'>
+              <div className='flex max-w-[156px] m-2'>
                 <div className='grid'>
                   <h1 className='text-center p-2 flex justify-center self-center'>{cat.name}</h1>
                   <span className=''>{cat.shortDescription}</span>

@@ -1,5 +1,6 @@
-export async function GetData()  {
-  const res = await fetch("http://localhost:3001/products");
+export async function GetData(rout: string)  {
+
+  const res = await fetch(rout, {cache: 'no-store'});
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");

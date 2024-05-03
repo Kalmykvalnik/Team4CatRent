@@ -12,7 +12,7 @@ export default function Catalog() {
         </div>
         <span></span>
       </div>
-        
+        {GetData('http://localhost:3001/api/products')}
       </div>
     </main>
   );
