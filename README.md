@@ -18,6 +18,10 @@
    - `npm ci`
    - `npx nx serve basket-api`
 
+**Миграции:**
+1. После изменения схемы `schema.prisma` необходимо выполнить `npx prisma migrate dev --name [наименование_миграции]`
+2. Для публикации миграции в бд необходимо выполнить `npx prisma migrate deploy`
+
 **Для запуска Frontend необходимо:**
 1. Установить необходимые компоненты командой 'npm install' в папке Frontend
 2. Выполнить команду 'npm run dev' в папке Frontend
