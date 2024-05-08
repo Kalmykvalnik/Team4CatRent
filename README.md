@@ -8,7 +8,7 @@
 - npx nx serve api
 5. Добавить в корень папки `Backend` файл `.env` и в нём указать значения для переменных:
 
-   DATABASE_URL=
+   DATABASE_URL= (пример - DATABASE_URL=postgres://postgres:123@localhost:5432/delivery)
 
    JWT_SECRET=
 
@@ -17,6 +17,10 @@
 6. Для запуска **Basket** сервиса необходимо зайти в папку Backend/service/basket и выполнить там команды:
    - `npm ci`
    - `npx nx serve basket-api`
+
+**Миграции:**
+1. После изменения схемы `schema.prisma` необходимо выполнить `npx prisma migrate dev --name [наименование_миграции]`
+2. Для публикации миграции в бд необходимо выполнить `npx prisma migrate deploy`
 
 **Для запуска Frontend необходимо:**
 1. Установить необходимые компоненты командой 'npm install' в папке Frontend
