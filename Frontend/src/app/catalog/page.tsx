@@ -1,3 +1,4 @@
+import {GetData} from '@components/common/getData'
 export default function Catalog() {
   return (
     <main className=" bg-white">
@@ -9,8 +10,9 @@ export default function Catalog() {
             здесь будет контент окна фильтрации котов
           </p>
         </div>
+        <span></span>
       </div>
-        
+        {GetData('http://localhost:3001/api/products')}
       </div>
     </main>
   );
