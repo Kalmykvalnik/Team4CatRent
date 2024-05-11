@@ -1,11 +1,11 @@
 import { NextFunction, Request, Response, Router } from 'express';
-import { createUser } from './auth.service';
+import { createUser, login } from './auth.service';
 
 const router = Router();
 
 //register
 router.post(
-  '/register',
+  '/user/register',
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       console.log(req.body);
@@ -19,9 +19,14 @@ router.post(
 
 //login
 router.post(
-  'login',
+  '/user/login',
   async (req: Request, res: Response, next: NextFunction) => {
-    res.json('Basket');
+    try {
+      const user = await login(req.body);
+      res.json(user);
+    } catch (error) {
+      next(error);
+    }
   }
 );
 
