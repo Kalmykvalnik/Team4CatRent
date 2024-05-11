@@ -23,6 +23,23 @@ model User {
   emailpermission Boolean
   smspermission   Boolean
   orders          Order[]
+  adressuser      AdressUser[]
+}
+
+model AdressUser {
+  id                 Int       @id @default(autoincrement())
+  user               User      @relation(fields: [userid], references: [id])
+  userid             Int       
+  order              Int
+  district           String  
+  city_settlement    String
+  city               String
+  street             String
+  planning_structure String
+  house              String
+  building           String
+  flat               String
+  room               String
 }
 
 model Order {
