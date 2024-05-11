@@ -9,19 +9,32 @@ generator client {
 }
 
 model User {
-  id         Int       @id @default(autoincrement())
-  username   String    @unique
-  password   String
-  phone      String
-  email      String    @unique
-  firstname  String
-  lastname   String
-  middlename String
-  sex        Boolean
-  birthdate  DateTime
-  creditcard String
+  id              Int       @id @default(autoincrement())
+  username        String    @unique
+  password        String
+  phone           String
+  email           String    @unique
+  firstname       String
+  lastname        String
+  middlename      String
+  sex             Boolean
+  birthdate       DateTime
+  creditcard      String
   emailpermission Boolean
-  smspermission Boolean
+  smspermission   Boolean
+  orders          Order[]
+}
+
+model Order {
+  id            Int       @id @default(autoincrement())
+  user          User      @relation(fields: [userid], references: [id])
+  userid        Int
+  DealDate      DateTime
+  Cost          Float
+  DeliveryDate  DateTime
+  RentTime      DateTime
+  Status        Int
+  Notes         String
 }
 
 model Product {
@@ -30,3 +43,4 @@ model Product {
   description String
   isactive    Boolean
 }
+
