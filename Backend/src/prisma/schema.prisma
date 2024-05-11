@@ -42,17 +42,33 @@ model AdressUser {
   room               String
 }
 
+model AddressDelivery {
+  id                 Int       @id @default(autoincrement())
+  order              Order     @relation(fields: [orderid], references: [id])
+  orderid            Int       @unique
+  district           String  
+  city_settlement    String
+  city               String
+  street             String
+  planning_structure String
+  house              String
+  building           String
+  flat               String
+  room               String
+}
+
 model Order {
-  id            Int       @id @default(autoincrement())
-  user          User      @relation(fields: [userid], references: [id])
-  userid        Int
-  DealDate      DateTime
-  Cost          Float
-  DeliveryDate  DateTime
-  RentTime      DateTime
-  Status        Int
-  Notes         String
-  orderlist     OrderList[]
+  id              Int       @id @default(autoincrement())
+  user            User      @relation(fields: [userid], references: [id])
+  userid          Int
+  DealDate        DateTime
+  Cost            Float
+  DeliveryDate    DateTime
+  RentTime        DateTime
+  Status          Int
+  Notes           String
+  orderlist       OrderList[]
+  addressdelivery AddressDelivery?
 }
 
 model OrderList {
