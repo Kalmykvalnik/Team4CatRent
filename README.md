@@ -17,6 +17,11 @@
 6. Для запуска **Basket** сервиса необходимо зайти в папку Backend/service/basket и выполнить там команды:
    - `npm ci`
    - `npx nx serve basket-api`
+  
+7. Для запуска **Product** сервиса необходимо зайти в папку Backend/service/product и выполнить там команды:
+   - `npm ci`
+   - `npx nx serve product-api`
+
 
 **Миграции:**
 1. После изменения схемы `schema.prisma` необходимо выполнить `npx prisma migrate dev --name [наименование_миграции]`
