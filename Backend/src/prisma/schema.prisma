@@ -35,6 +35,19 @@ model Order {
   RentTime      DateTime
   Status        Int
   Notes         String
+  orderlist     OrderList[]
+}
+
+model OrderList {
+  id            Int       @id @default(autoincrement())
+  order         Order     @relation(fields: [orderid], references: [id])
+  orderid       Int
+  product       Product   @relation(fields: [productid], references: [id])
+  productid     Int
+  Price         Float
+  OrderStartT   DateTime
+  OrderEndT     DateTime
+  IsReviewLeft  Boolean
 }
 
 model Product {
@@ -42,5 +55,6 @@ model Product {
   name        String
   description String
   isactive    Boolean
+  orderlist   OrderList[]
 }
 
