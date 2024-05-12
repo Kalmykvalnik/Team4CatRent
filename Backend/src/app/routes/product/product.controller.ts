@@ -6,4 +6,11 @@ router.get('/products', (req: Request, res: Response, next: NextFunction) => {
   res.json('List of cats');
 });
 
+router.get(
+  '/product/:id',
+  (req: Request, res: Response, next: NextFunction) => {
+    res.json('Cat');
+  }
+);
+
 export default router;

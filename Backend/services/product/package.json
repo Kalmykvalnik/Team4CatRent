@@ -9,7 +9,6 @@
     },
     "private": true,
     "prisma": {
-        "seed": "ts-node --transpile-only --compiler-options {\"module\":\"CommonJS\"} src/prisma/seed.ts",
         "schema": "src/prisma/schema.prisma"
     },
     "dependencies": {
