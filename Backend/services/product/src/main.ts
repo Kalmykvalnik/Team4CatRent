@@ -1,6 +1,7 @@
 import express from 'express';
 import * as bodyParser from 'body-parser';
 import HttpException from './app/models/http-exception.model';
+import { getAllProducts } from './app/services/product.service';
 const amqp = require('amqplib');
 
 const app = express();
@@ -49,18 +50,22 @@ async function connectToRabbitMQ() {
   await channel.assertQueue('product-service-queue');
 
   channel.consume('product-service-queue', (data) => {
-    console.log('Consumed from product-service-queue');
-    order = JSON.parse(data.content);
+    console.log('Consumed from core-product-service-queue');
     channel.ack(data);
+    let value = JSON.parse(data.content);
 
-    console.log(JSON.parse(data.content));
+    switch (value[0]) {
+      case 'get-single':
+        break;
+      case 'get-all':
+        console.log(getAllProducts());
+        break;
+    }
 
     channel.sendToQueue(
       'core-product-service-queue',
       Buffer.from(JSON.stringify('Succ added to product'))
     );
-
-    console.log('Ok');
   });
 }
 connectToRabbitMQ();
