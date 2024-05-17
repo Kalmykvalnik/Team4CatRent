@@ -7,3 +7,87 @@ generator client {
   provider        = "prisma-client-js"
   previewFeatures = []
 }
+
+model User {
+  id              Int       @id @default(autoincrement())
+  username        String    @unique
+  password        String
+  phone           String
+  email           String    @unique
+  firstname       String
+  lastname        String
+  middlename      String
+  sex             Boolean
+  birthdate       DateTime
+  creditcard      String
+  emailpermission Boolean
+  smspermission   Boolean
+  orders          Order[]
+  adressuser      AdressUser[]
+}
+
+model AdressUser {
+  id                 Int       @id @default(autoincrement())
+  user               User      @relation(fields: [userid], references: [id])
+  userid             Int       
+  order              Int
+  district           String  
+  city_settlement    String
+  city               String
+  street             String
+  planning_structure String
+  house              String
+  building           String
+  flat               String
+  room               String
+}
+
+model AddressDelivery {
+  id                 Int       @id @default(autoincrement())
+  order              Order     @relation(fields: [orderid], references: [id])
+  orderid            Int       @unique
+  district           String  
+  city_settlement    String
+  city               String
+  street             String
+  planning_structure String
+  house              String
+  building           String
+  flat               String
+  room               String
+}
+
+model Order {
+  id              Int       @id @default(autoincrement())
+  user            User      @relation(fields: [userid], references: [id])
+  userid          Int
+  DealDate        DateTime
+  Cost            Float
+  DeliveryDate    DateTime
+  RentTime        DateTime
+  Status          Int
+  Notes           String
+  orderlist       OrderList[]
+  addressdelivery AddressDelivery?
+}
+
+model OrderList {
+  id            Int       @id @default(autoincrement())
+  order         Order     @relation(fields: [orderid], references: [id])
+  orderid       Int
+  product       Product   @relation(fields: [productid], references: [id])
+  productid     Int
+  Price         Float
+  OrderStartT   DateTime
+  OrderEndT     DateTime
+  IsReviewLeft  Boolean
+}
+
+model Product {
+  id          Int       @id @default(autoincrement())
+  name        String
+  description String
+  isactive    Boolean
+  orderlist   OrderList[]
+}
+
