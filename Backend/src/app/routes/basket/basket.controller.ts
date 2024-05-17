@@ -14,10 +14,6 @@ async function connectToRabbitMQ() {
 connectToRabbitMQ();
 
 router.get('/basket', (req: Request, res: Response, next: NextFunction) => {
-  //res.json('Basket');
-  //const {currentUserId} = req.body;
-  //const {products} =
-
   channel.sendToQueue(
     'basket-service-queue',
     Buffer.from(JSON.stringify(['Cat 1', 'Cat 2', 'Cat 3']))
