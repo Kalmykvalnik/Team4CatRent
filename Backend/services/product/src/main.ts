@@ -60,7 +60,7 @@ async function connectToRabbitMQ() {
         result = await getProduct(Number.parseInt(value[1]));
         break;
       case 'get-all':
-        result = getAllProducts();
+        result = await getAllProducts(Number.parseInt(value[1]));
         break;
     }
 
