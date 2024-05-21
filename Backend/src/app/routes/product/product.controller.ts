@@ -14,25 +14,28 @@ connectToRabbitMQ();
 
 const router = Router();
 
-router.get('/products', (req: Request, res: Response, next: NextFunction) => {
-  channel.sendToQueue(
-    'product-service-queue',
-    Buffer.from(JSON.stringify(['get-all']))
-  );
-
-  channel.consume('core-product-service-queue', (data) => {
-    console.log(
-      'Consumed from product-service-queue',
-      Buffer.from(JSON.stringify(['all']))
+router.get(
+  '/products/:pagenumber',
+  (req: Request, res: Response, next: NextFunction) => {
+    channel.sendToQueue(
+      'product-service-queue',
+      Buffer.from(JSON.stringify(['get-all', req.params.pagenumber]))
     );
-    product = JSON.parse(data.content);
-    channel.ack(data);
-  });
 
-  return res.status(201).json({
-    product,
-  });
-});
+    channel.consume('core-product-service-queue', (data) => {
+      console.log(
+        'Consumed from product-service-queue',
+        Buffer.from(JSON.stringify(['all']))
+      );
+      product = JSON.parse(data.content);
+      channel.ack(data);
+    });
+
+    return res.status(201).json({
+      product,
+    });
+  }
+);
 
 router.get(
   '/product/:id',
