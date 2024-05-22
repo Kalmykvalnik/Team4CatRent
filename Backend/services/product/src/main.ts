@@ -37,7 +37,7 @@ app.use(
   }
 );
 
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3003;
 
 app.listen(PORT, () => {
   console.info(`server up on port ${PORT}`);
