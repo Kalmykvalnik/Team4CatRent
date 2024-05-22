@@ -57,4 +57,59 @@ router.get(
   }
 );
 
+router.delete('/product/:id',(req:Request, res:Response,next:NextFunction)=>{
+  try{
+    channel.sendToQueue(
+      'product-service-queue',
+      Buffer.from(JSON.stringify(['delete-single', req.params.id]))
+    );
+  
+    channel.consume('core-product-service-queue', (data) => {
+      console.log('Consumed from product-service-queue');
+      product = JSON.parse(data.content);
+      channel.ack(data);
+    });
+  }catch(e){
+    next(e);
+  }
+
+  return res.status(201).json({
+    product,
+  });
+})
+
+router.put('/product/:id',(req:Request, res:Response,next:NextFunction)=>{
+  channel.sendToQueue(
+    'product-service-queue',
+    Buffer.from(JSON.stringify(['edit-single', req.params.id, req.body]))
+  );
+  
+  channel.consume('core-product-service-queue', (data) => {
+    console.log('Consumed from product-service-queue');
+    product = JSON.parse(data.content);
+    channel.ack(data);
+  });
+
+  return res.status(201).json({
+    product,
+  });
+})
+
+router.post('/product/:id',(req:Request, res:Response,next:NextFunction)=>{
+  channel.sendToQueue(
+    'product-service-queue',
+    Buffer.from(JSON.stringify(['create-single', req.body]))
+  );
+  
+  channel.consume('core-product-service-queue', (data) => {
+    console.log('Consumed from product-service-queue');
+    product = JSON.parse(data.content);
+    channel.ack(data);
+  });
+
+  return res.status(201).json({
+    product,
+  });
+})
+
 export default router;

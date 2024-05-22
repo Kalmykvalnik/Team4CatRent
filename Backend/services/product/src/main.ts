@@ -1,7 +1,13 @@
 import express from 'express';
 import * as bodyParser from 'body-parser';
 import HttpException from './app/models/http-exception.model';
-import { getAllProducts, getProduct } from './app/services/product.service';
+import { 
+  getAllProducts, 
+  getProduct,
+  deleteProduct,
+  editProduct,
+  createProduct
+} from './app/services/product.service';
 const amqp = require('amqplib');
 
 const app = express();
@@ -61,6 +67,15 @@ async function connectToRabbitMQ() {
         break;
       case 'get-all':
         result = await getAllProducts(Number.parseInt(value[1]));
+        break;
+      case 'delete-single':
+        result = await deleteProduct(Number.parseInt(value[1]));
+        break;
+      case 'edit-single':
+        result = await editProduct(Number.parseInt(value[1]), value[2]);
+        break;
+      case 'create-single':
+        result = await createProduct(value[1]);
         break;
     }
 

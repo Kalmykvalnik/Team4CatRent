@@ -24,3 +24,34 @@ export const getProduct = async (id: number) => {
   });
   return product;
 };
+
+export const deleteProduct = async (id:number)=>{
+    const product = await prisma.product.delete({
+      where:{
+        id: id,
+      }
+    })
+  return product;
+}
+
+type productData = {
+  name?: string,
+  description?: string,
+  isactive?: boolean,
+  orderlist?: any //??
+}
+
+export const editProduct = async (id: number, data:Object)=>{
+  const product = await prisma.product.update({
+    where: {id}, 
+    data: data //orderList??
+  });
+  return product;
+}
+
+export const createProduct = async (data:any)=>{
+  const product = await prisma.product.create({
+    data: data //orderList??
+  });
+  return product;
+}
