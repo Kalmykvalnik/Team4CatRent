@@ -1,8 +1,6 @@
-import { Pruduct, Pruducts } from "../../types";
-
 export async function GetProducts(): Promise<Pruducts> {
 
-  const res = await fetch('http://localhost:3002/api/basket', {cache: 'no-store'});
+  const res = await fetch('http://localhost:3003/api/product', {cache: 'no-store'});
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");
@@ -14,7 +12,7 @@ export async function GetProducts(): Promise<Pruducts> {
 
 export async function GetProduct(): Promise<Pruduct> {
 
-  const res = await fetch('http://localhost:3002/api/basket', {cache: 'no-store'});
+  const res = await fetch('http://localhost:3003/api/product/${id}', {cache: 'no-store'});
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");

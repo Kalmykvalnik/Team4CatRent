@@ -1,4 +1,4 @@
-import { GetProducts } from '@/actions/getData'
+import { GetProducts } from '@/actions/getProduct'
 
 
 export default async function Catalog() {
@@ -17,12 +17,12 @@ export default async function Catalog() {
           </div>
           <span></span>
         </div>
-        {/*payload.map((object: any) =>
+        {payload.result.map((object: Pruduct) =>
           <ul>
-            <li>{object.status}</li>
+            <li>{object.name}</li>
           </ul>
-        )*/
-        payload.status
+        )
+        //payload.status
         }
       </div>
     </main>
