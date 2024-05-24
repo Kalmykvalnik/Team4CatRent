@@ -11,23 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/api/product', (req: express.Request, res: express.Response) => {
-  res.json({ 
-    status: 'Product service is running on /api/product',
-    "result": [
-      {
-        "id": 1,
-        "name": "product1",
-        "description": "product1 description",
-        "isactive": true
-    },
-    {
-      "id": 2,
-      "name": "product2",
-      "description": "product2 description",
-      "isactive": true
-    }
-  ]
-   });
+  res.json({status: 'Product service is running on /api/product'});
 });
 
 app.use(

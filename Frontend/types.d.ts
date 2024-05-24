@@ -15,7 +15,7 @@ interface User{
     smspermission: boolean
 }
 
-interface Pruduct{
+interface Product{
   status: string
   id: number
   name: string
@@ -23,9 +23,9 @@ interface Pruduct{
   isactive: boolean
 }
 
-interface Pruducts{
+interface Products{
   status: string
-  result: [Pruduct]
+  result: [Product]
 }
 
 interface Order{
@@ -39,3 +39,11 @@ interface Order{
   Notes: string
 }
 
+interface Basket{
+  id: number
+  userid: number
+  Cost: number
+  DeliveryDate: Date
+  RentTime: Date
+  product: Product
+}

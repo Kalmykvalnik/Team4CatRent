@@ -17,7 +17,7 @@ export default async function Catalog() {
           </div>
           <span></span>
         </div>
-        {payload.result.map((object: Pruduct) =>
+        {payload.result.map((object: Product) =>
           <ul>
             <li>{object.name}</li>
           </ul>
