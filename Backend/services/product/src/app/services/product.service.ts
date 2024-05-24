@@ -1,3 +1,4 @@
+import { Product } from '@prisma/client';
 import prisma from '../../prisma/prisma-client';
 const productsperpage: number = 20;
 
@@ -34,14 +35,7 @@ export const deleteProduct = async (id:number)=>{
   return product;
 }
 
-type productData = {
-  name?: string,
-  description?: string,
-  isactive?: boolean,
-  orderlist?: any //??
-}
-
-export const editProduct = async (id: number, data:Object)=>{
+export const editProduct = async (id: number, data:Product)=>{
   const product = await prisma.product.update({
     where: {id}, 
     data: data //orderList??
@@ -49,9 +43,7 @@ export const editProduct = async (id: number, data:Object)=>{
   return product;
 }
 
-export const createProduct = async (data:any)=>{
-  const product = await prisma.product.create({
-    data: data //orderList??
-  });
+export const createProduct = async (data:Product)=>{
+  const product = await prisma.product.create({data});
   return product;
 }

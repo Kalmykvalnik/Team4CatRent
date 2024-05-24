@@ -95,7 +95,7 @@ router.put('/product/:id',(req:Request, res:Response,next:NextFunction)=>{
   });
 })
 
-router.post('/product/:id',(req:Request, res:Response,next:NextFunction)=>{
+router.post('/product',(req:Request, res:Response,next:NextFunction)=>{
   channel.sendToQueue(
     'product-service-queue',
     Buffer.from(JSON.stringify(['create-single', req.body]))
