@@ -17,12 +17,12 @@ export default async function Catalog() {
           </div>
           <span></span>
         </div>
-        {payload.result.map((object: Product) =>
+        {/*payload.result.map((object: Product) =>
           <ul>
             <li>{object.name}</li>
           </ul>
-        )
-        //payload.status
+        )*/
+        payload.status
         }
       </div>
     </main>
