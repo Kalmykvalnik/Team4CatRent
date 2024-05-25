@@ -1,7 +1,13 @@
 import express from 'express';
 import * as bodyParser from 'body-parser';
 import HttpException from './app/models/http-exception.model';
-import { getAllProducts } from './app/services/product.service';
+import { 
+  getAllProducts, 
+  getProduct,
+  deleteProduct,
+  editProduct,
+  createProduct
+} from './app/services/product.service';
 const amqp = require('amqplib');
 
 const app = express();
@@ -48,23 +54,34 @@ async function connectToRabbitMQ() {
   connection = await amqp.connect(amqpServer);
   channel = await connection.createChannel();
   await channel.assertQueue('product-service-queue');
+  let result: any;
 
-  channel.consume('product-service-queue', (data) => {
+  channel.consume('product-service-queue', async (data) => {
     console.log('Consumed from core-product-service-queue');
     channel.ack(data);
     let value = JSON.parse(data.content);
 
     switch (value[0]) {
       case 'get-single':
+        result = await getProduct(Number.parseInt(value[1]));
         break;
       case 'get-all':
-        console.log(getAllProducts());
+        result = await getAllProducts(Number.parseInt(value[1]));
+        break;
+      case 'delete-single':
+        result = await deleteProduct(Number.parseInt(value[1]));
+        break;
+      case 'edit-single':
+        result = await editProduct(Number.parseInt(value[1]), value[2]);
+        break;
+      case 'create-single':
+        result = await createProduct(value[1]);
         break;
     }
 
     channel.sendToQueue(
       'core-product-service-queue',
-      Buffer.from(JSON.stringify('Succ added to product'))
+      Buffer.from(JSON.stringify(result))
     );
   });
 }

@@ -2,7 +2,7 @@ import { json } from 'body-parser';
 import { NextFunction, Request, Response, Router } from 'express';
 const amqp = require('amqplib');
 
-let order, channel, connection;
+let product, channel, connection;
 
 async function connectToRabbitMQ() {
   const amqpServer = 'amqp://guest:guest@localhost:5672';
@@ -14,26 +14,28 @@ connectToRabbitMQ();
 
 const router = Router();
 
-router.get('/products', (req: Request, res: Response, next: NextFunction) => {
-  channel.sendToQueue(
-    'product-service-queue',
-    Buffer.from(JSON.stringify(['get-all']))
-  );
-
-  channel.consume('core-product-service-queue', (data) => {
-    console.log(
-      'Consumed from product-service-queue',
-      Buffer.from(JSON.stringify(['all']))
+router.get(
+  '/products/:pagenumber',
+  (req: Request, res: Response, next: NextFunction) => {
+    channel.sendToQueue(
+      'product-service-queue',
+      Buffer.from(JSON.stringify(['get-all', req.params.pagenumber]))
     );
-    order = JSON.parse(data.content);
-    channel.ack(data);
-  });
 
-  return res.status(201).json({
-    message: 'get all products',
-    order,
-  });
-});
+    channel.consume('core-product-service-queue', (data) => {
+      console.log(
+        'Consumed from product-service-queue',
+        Buffer.from(JSON.stringify(['all']))
+      );
+      product = JSON.parse(data.content);
+      channel.ack(data);
+    });
+
+    return res.status(201).json({
+      product,
+    });
+  }
+);
 
 router.get(
   '/product/:id',
@@ -45,15 +47,69 @@ router.get(
 
     channel.consume('core-product-service-queue', (data) => {
       console.log('Consumed from product-service-queue');
-      order = JSON.parse(data.content);
+      product = JSON.parse(data.content);
       channel.ack(data);
     });
 
     return res.status(201).json({
-      message: `get product with id ${req.params.id}`,
-      order,
+      product,
     });
   }
 );
+
+router.delete('/product/:id',(req:Request, res:Response,next:NextFunction)=>{
+  try{
+    channel.sendToQueue(
+      'product-service-queue',
+      Buffer.from(JSON.stringify(['delete-single', req.params.id]))
+    );
+  
+    channel.consume('core-product-service-queue', (data) => {
+      console.log('Consumed from product-service-queue');
+      product = JSON.parse(data.content);
+      channel.ack(data);
+    });
+  }catch(e){
+    next(e);
+  }
+
+  return res.status(201).json({
+    product,
+  });
+})
+
+router.put('/product/:id',(req:Request, res:Response,next:NextFunction)=>{
+  channel.sendToQueue(
+    'product-service-queue',
+    Buffer.from(JSON.stringify(['edit-single', req.params.id, req.body]))
+  );
+  
+  channel.consume('core-product-service-queue', (data) => {
+    console.log('Consumed from product-service-queue');
+    product = JSON.parse(data.content);
+    channel.ack(data);
+  });
+
+  return res.status(201).json({
+    product,
+  });
+})
+
+router.post('/product',(req:Request, res:Response,next:NextFunction)=>{
+  channel.sendToQueue(
+    'product-service-queue',
+    Buffer.from(JSON.stringify(['create-single', req.body]))
+  );
+  
+  channel.consume('core-product-service-queue', (data) => {
+    console.log('Consumed from product-service-queue');
+    product = JSON.parse(data.content);
+    channel.ack(data);
+  });
+
+  return res.status(201).json({
+    product,
+  });
+})
 
 export default router;
