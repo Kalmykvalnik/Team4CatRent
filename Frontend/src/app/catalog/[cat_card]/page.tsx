@@ -60,7 +60,7 @@ export default function CatCard() {
               </div>
               <div className="flex items-center gap-2">
                 <button className="bg-[#0F57C2] hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-lg">
-                  В карзину
+                  В корзину
                 </button>
                 <button>
                   <HeartIcon className="w-4 h-4 mr-2" />
