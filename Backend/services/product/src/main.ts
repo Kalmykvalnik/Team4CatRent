@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/api/product', (req: express.Request, res: express.Response) => {
-  res.json({ status: 'Product service is running on /api/product' });
+  res.json({status: 'Product service is running on /api/product'});
 });
 
 app.use(
@@ -43,7 +43,7 @@ app.use(
   }
 );
 
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3003;
 
 app.listen(PORT, () => {
   console.info(`server up on port ${PORT}`);

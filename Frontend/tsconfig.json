@@ -21,9 +21,10 @@
       "@/*": ["./src/*"],
       "@images/*": ["./public/img/*"],
       "@root/*": ["../*"],
-      "@components/*": ["./src/components/*"]
+      "@components/*": ["./src/components/*"],
+      "@actions": ["./src/actions/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "**/*.ts"],
   "exclude": ["node_modules"]
 }
