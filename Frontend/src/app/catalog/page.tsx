@@ -3,6 +3,8 @@ import { GetProducts } from '@/actions/getProduct'
 
 export default async function Catalog() {
 
+  
+
   const payload = await GetProducts();
 
   return (
@@ -17,12 +19,12 @@ export default async function Catalog() {
           </div>
           <span></span>
         </div>
-        {/*payload.result.map((object: Product) =>
+        {payload.product.map((object: Product) =>
           <ul>
             <li>{object.name}</li>
           </ul>
-        )*/
-        payload.status
+        )
+        //payload.product[0].name
         }
       </div>
     </main>

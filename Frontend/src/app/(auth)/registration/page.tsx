@@ -4,9 +4,7 @@ export default function Registration() {
       <div className="">
         <div className="flex h-screen justify-center">
           <div>
-            <p>
-              здесь будет регистрация пользователя
-            </p>
+           <h1 className="text-center text-xl">Регистрация</h1>
           </div>
         </div>
       </div>

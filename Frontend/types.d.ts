@@ -16,7 +16,6 @@ interface User{
 }
 
 interface Product{
-  status: string
   id: number
   name: string
   description: String
