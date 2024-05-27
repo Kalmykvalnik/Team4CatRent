@@ -23,8 +23,8 @@ interface Product{
 }
 
 interface Products{
-  status: string
-  result: [Product]
+  "status": string,
+  "product": Product[]
 }
 
 interface Order{
