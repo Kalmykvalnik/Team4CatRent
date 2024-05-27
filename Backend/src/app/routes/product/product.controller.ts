@@ -16,7 +16,7 @@ const router = Router();
 
 router.get(
   '/products/:pagenumber',
-  (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response, next: NextFunction) => {
     channel.sendToQueue(
       'product-service-queue',
       Buffer.from(JSON.stringify(['get-all', req.params.pagenumber]))
@@ -31,6 +31,8 @@ router.get(
       channel.ack(data);
     });
 
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
     return res.status(201).json({
       product,
     });
@@ -39,7 +41,7 @@ router.get(
 
 router.get(
   '/product/:id',
-  (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response, next: NextFunction) => {
     channel.sendToQueue(
       'product-service-queue',
       Buffer.from(JSON.stringify(['get-single', req.params.id]))
@@ -50,6 +52,8 @@ router.get(
       product = JSON.parse(data.content);
       channel.ack(data);
     });
+
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
     return res.status(201).json({
       product,
