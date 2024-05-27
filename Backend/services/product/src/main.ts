@@ -1,7 +1,13 @@
 import express from 'express';
 import * as bodyParser from 'body-parser';
 import HttpException from './app/models/http-exception.model';
-import { getAllProducts, getProduct } from './app/services/product.service';
+import { 
+  getAllProducts, 
+  getProduct,
+  deleteProduct,
+  editProduct,
+  createProduct
+} from './app/services/product.service';
 const amqp = require('amqplib');
 
 const app = express();
@@ -11,7 +17,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/api/product', (req: express.Request, res: express.Response) => {
-  res.json({ status: 'Product service is running on /api/product' });
+  res.json({status: 'Product service is running on /api/product'});
 });
 
 app.use(
@@ -37,7 +43,7 @@ app.use(
   }
 );
 
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3003;
 
 app.listen(PORT, () => {
   console.info(`server up on port ${PORT}`);
@@ -62,6 +68,15 @@ connectToRabbitMQ().then(() => {
         break;
       case 'get-all':
         result = await getAllProducts(Number.parseInt(value[1]));
+        break;
+      case 'delete-single':
+        result = await deleteProduct(Number.parseInt(value[1]));
+        break;
+      case 'edit-single':
+        result = await editProduct(Number.parseInt(value[1]), value[2]);
+        break;
+      case 'create-single':
+        result = await createProduct(value[1]);
         break;
     }
 
