@@ -16,7 +16,7 @@ const router = Router();
 
 router.get(
   '/products/:pagenumber',
-  (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response, next: NextFunction) => {
     try {
       channel.sendToQueue(
         'product-service-queue',
@@ -32,6 +32,8 @@ router.get(
         channel.ack(data);
       });
 
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
       if (product) {
         return res.status(200).json(product);
       } else {
@@ -45,7 +47,7 @@ router.get(
 
 router.get(
   '/product/:id',
-  (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response, next: NextFunction) => {
     try {
       channel.sendToQueue(
         'product-service-queue',
@@ -57,6 +59,8 @@ router.get(
         product = JSON.parse(data.content);
         channel.ack(data);
       });
+
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
       if (product) {
         return res.status(200).json(product);
@@ -71,7 +75,7 @@ router.get(
 
 router.delete(
   '/product/:id',
-  (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response, next: NextFunction) => {
     try {
       channel.sendToQueue(
         'product-service-queue',
@@ -83,6 +87,9 @@ router.delete(
         product = JSON.parse(data.content);
         channel.ack(data);
       });
+
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
       if (product) {
         return res.status(204).end();
       } else {
@@ -96,7 +103,7 @@ router.delete(
 
 router.put(
   '/product/:id',
-  (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response, next: NextFunction) => {
     try {
       channel.sendToQueue(
         'product-service-queue',
@@ -109,6 +116,8 @@ router.put(
         channel.ack(data);
       });
 
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
       if (product) {
         return res.status(200).json(product);
       } else {
@@ -120,22 +129,28 @@ router.put(
   }
 );
 
-router.post('/product', (req: Request, res: Response, next: NextFunction) => {
-  try {
-    channel.sendToQueue(
-      'product-service-queue',
-      Buffer.from(JSON.stringify(['create-single', req.body]))
-    );
+router.post(
+  '/product',
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      channel.sendToQueue(
+        'product-service-queue',
+        Buffer.from(JSON.stringify(['create-single', req.body]))
+      );
 
-    channel.consume('core-product-service-queue', (data) => {
-      console.log('Consumed from product-service-queue');
-      product = JSON.parse(data.content);
-      channel.ack(data);
-    });
-    return res.status(201).json({ product });
-  } catch (error) {
-    return res.status(500).json({ error: 'Ошибка запроса' });
+      channel.consume('core-product-service-queue', (data) => {
+        console.log('Consumed from product-service-queue');
+        product = JSON.parse(data.content);
+        channel.ack(data);
+      });
+
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      return res.status(201).json({ product });
+    } catch (error) {
+      return res.status(500).json({ error: 'Ошибка запроса' });
+    }
   }
-});
+);
 
 export default router;
