@@ -54,8 +54,9 @@ async function connectToRabbitMQ() {
   connection = await amqp.connect(amqpServer);
   channel = await connection.createChannel();
   await channel.assertQueue('product-service-queue');
+}
+connectToRabbitMQ().then(() => {
   let result: any;
-
   channel.consume('product-service-queue', async (data) => {
     console.log('Consumed from core-product-service-queue');
     channel.ack(data);
@@ -79,10 +80,11 @@ async function connectToRabbitMQ() {
         break;
     }
 
+    console.log(result);
+
     channel.sendToQueue(
       'core-product-service-queue',
       Buffer.from(JSON.stringify(result))
     );
   });
-}
-connectToRabbitMQ();
+});
