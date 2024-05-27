@@ -1,12 +1,12 @@
 import express from 'express';
 import * as bodyParser from 'body-parser';
 import HttpException from './app/models/http-exception.model';
-import { 
-  getAllProducts, 
+import {
+  getAllProducts,
   getProduct,
   deleteProduct,
   editProduct,
-  createProduct
+  createProduct,
 } from './app/services/product.service';
 const amqp = require('amqplib');
 
@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/api/product', (req: express.Request, res: express.Response) => {
-  res.json({status: 'Product service is running on /api/product'});
+  res.json({ status: 'Product service is running on /api/product' });
 });
 
 app.use(
