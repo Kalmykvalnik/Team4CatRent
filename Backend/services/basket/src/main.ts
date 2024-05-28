@@ -48,19 +48,43 @@ async function connectToRabbitMQ() {
   channel = await connection.createChannel();
   await channel.assertQueue('basket-service-queue');
 
-  channel.consume('basket-service-queue', (data) => {
-    console.log('Consumed from basket-service-queue');
-    order = JSON.parse(data.content);
-    channel.ack(data);
+  // channel.consume('basket-service-queue', (data) => {
+  //   console.log('Consumed from basket-service-queue');
+  //   order = JSON.parse(data.content);
+  //   channel.ack(data);
 
-    console.log(JSON.parse(data.content));
+  //   console.log(JSON.parse(data.content));
+
+  //   channel.sendToQueue(
+  //     'core-basket-service-queue',
+  //     Buffer.from(JSON.stringify('Succ added to basket'))
+  //   );
+
+  //   console.log('Ok');
+  // });
+}
+//connectToRabbitMQ();
+
+connectToRabbitMQ().then(() => {
+  let result: any;
+  channel.consume('basket-service-queue', async (data) => {
+    console.log('Consumed from basket-service-queue');
+    channel.ack(data);
+    let value = JSON.parse(data.content);
+
+    switch (value[0]) {
+      case 'create-single':
+        //result = await createBasket(value[1]);
+        break;
+    }
+
+    console.log(result);
 
     channel.sendToQueue(
       'core-basket-service-queue',
-      Buffer.from(JSON.stringify('Succ added to basket'))
+      Buffer.from(JSON.stringify(result))
     );
-
-    console.log('Ok');
   });
-}
-connectToRabbitMQ();
+})
+
+
