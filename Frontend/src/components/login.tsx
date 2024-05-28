@@ -1,10 +1,11 @@
 "use client"
 
-import Link from "next/link";
+import Link from 'next/link';
 
 import handleSubmit from "./../actions/login"
 
-export default function LoginTST() {
+
+export default function LoginForm() {
   return (
     <div className="border-solid bg-blue-300 rounded-lg p-2 shadow-xl">
       <h1 className="text-center text-xl">Вход</h1>

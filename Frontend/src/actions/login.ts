@@ -13,20 +13,18 @@ export default async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     //mode: 'no-cors',
     cache: 'no-store',
     method: 'POST',
-    headers:{ 'Access-Control-Allow-Origin': '*',
-              'Access-Control-Allow-Methods':'*',
-              'content-type': 'application/json',
-              'Access-Control-Allow-Headers': '*', 
-              'Content-Type' : 'Authorization',
-              'Access-Control-Max-Age':'5'
-            },
+    headers:{ 'content-type': 'application/json',},
     body: JSON.stringify({ email, password }),
   })
 
   if (response.ok) {
     /*router.push('/profile')*/
     
-    console.log('succses')
+    const answer : Promise<Auth> = response.json()
+
+    console.log((await answer).token)
+    
+    return (await answer).token
   } else {
     // Handle errors
     console.log('unsuccses')

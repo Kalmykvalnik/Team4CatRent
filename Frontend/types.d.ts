@@ -15,6 +15,12 @@ interface User{
     smspermission: boolean
 }
 
+interface Auth{
+  email: string
+  token: string
+  username: string
+}
+
 interface Product{
   id: number
   name: string
