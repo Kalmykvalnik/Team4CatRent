@@ -1,0 +1,31 @@
+model Basket {
+  user                  User      @relation(fields: [userid], references: [id])
+  userid                Int
+  offer                 Offer     @relation(fields: [offerid], references: [id])
+  offerid               Int
+  DeliveryDate          DateTime
+  RentTime              DateTime
+}
+
+model Photo {
+  id            Int         @id @default(autoincrement())
+  product       Product     @relation(fields: [productid], references: [id])
+  productid     Int
+  photo         String      
+  order         Int
+}
+
+model Feedback {
+  id            Int         @id @default(autoincrement())
+  product       Product     @relation(fields: [productid], references: [id])
+  productid     Int
+  user          User        @relation(fields: [userid], references: [id])
+  userid        Int
+  orderlist     OrderList   @relation(fields: [orderlistid], references: [id])
+  orderlistid   Int
+  anonymous     Boolean
+  rating        Int
+  text          String
+  photo         Photo       @relation(fields: [photoid], references: [id])
+  photoid       Int
+}
