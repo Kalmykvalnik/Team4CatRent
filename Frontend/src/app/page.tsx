@@ -1,8 +1,6 @@
 import banner from "@images/banner.jpg"
 import Image from 'next/image';
-import {Carousel} from '@components/common/carousel'
-
-import cat0001 from "@images/banner.jpg"
+import {Carousel} from '@/components/common/carousel'
 
 
 
