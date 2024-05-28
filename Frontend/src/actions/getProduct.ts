@@ -1,4 +1,4 @@
-export async function GetProducts(): Promise<Products> {
+export async function GetProducts(): Promise<Product[]> {
 
   const res = await fetch('http://localhost:3001/api/products/1', {cache: 'no-store'});
 

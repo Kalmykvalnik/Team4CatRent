@@ -22,10 +22,7 @@ interface Product{
   isactive: boolean
 }
 
-interface Products{
-  "status": string,
-  "product": Product[]
-}
+
 
 interface Order{
   id: number

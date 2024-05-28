@@ -20,7 +20,7 @@ export default async function Catalog() {
           <span></span>
         </div>
         <div>
-          {payload.product.map((object: Product) =>
+          {payload.map((object: Product) =>
 
             <li key={object.id}>{object.name}</li>
 
