@@ -2,13 +2,10 @@ import express from 'express';
 import * as bodyParser from 'body-parser';
 import routes from './app/routes/routes';
 import HttpException from './app/models/http-exception.model';
-import cors from 'cors';
+import morganMiddleware from './middlewares/morgan.middleware';
 
 const app = express();
-
-/**
- * App Configuration
- */
+app.use(morganMiddleware);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
