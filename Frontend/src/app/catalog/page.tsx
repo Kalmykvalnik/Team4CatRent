@@ -1,4 +1,5 @@
 import { GetProducts } from '@/actions/getProduct'
+import Link from "next/link"
 
 
 export default async function Catalog() {
@@ -22,10 +23,10 @@ export default async function Catalog() {
         <div>
           {payload.map((object: Product) =>
 
-            <li key={object.id}>{object.name}</li>
-
+            <li key={object.id}>
+              <Link href={`/catalog/${object.id}`}>{object.name}</Link>
+            </li>
           )
-            //payload.product[0].name
           }
         </div>
 

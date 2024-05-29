@@ -109,21 +109,12 @@ model Specification {
 }
 
 model SpecificationValue {
-<<<<<<< igor.kuchin
-  id                Int                 @id @default(autoincrement())
-  specification     Specification       @relation(fields: [specificationid], references: [id])
-  specificationid   Int
-  value             String
-  order             Int
-  SpecificationList SpecificationList[]
-=======
   id                  Int               @id @default(autoincrement())
   specification       Specification     @relation(fields: [specificationid], references: [id])
   specificationid     Int
   value               String
   order               Int
   SpecificationList   SpecificationList[]
->>>>>>> main
 }
 
 model SpecificationList {

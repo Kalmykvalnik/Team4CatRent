@@ -1,6 +1,15 @@
 import HeartIcon from "@/components/common/heartIcon"
+import { GetProduct } from '@/actions/getProduct'
 
 import Gallery from '@/components/common/slider'
+
+type Props = {
+  params: {
+    cat_card: string
+  }
+}
+
+
 
 const name = "Кардинал"
 
@@ -9,7 +18,7 @@ const characteristics = [
   {par: "Кот"},
   {par: "Добрый"},
   {par: "Среднешерстный"},
-  {par: "Спокойный"},
+  {par: "Привит"},
   {par: "Обработан от паразитов"}
 ]
 
@@ -24,7 +33,13 @@ const myComponentList = characteristics.map((obj: any, index) => (
 ));
 
 
-export default function CatCard() {
+
+export default async function CatCard({params: {cat_card}} : Props) {
+
+  //console.log('console:'+ cat_card)
+  const payload = await GetProduct(cat_card);
+  //console.log(payload)
+
   return (
     <div className="bg-white h-screen">
       <div className="flex  justify-center m-6">
@@ -34,7 +49,7 @@ export default function CatCard() {
               <Gallery></Gallery>
             </div>
             <div className="grid gap-8 text-sm flex-1 ">
-              <h2 className="font-semibold text-lg text-center">{name}</h2>
+              <h2 className="font-semibold text-lg text-center">{payload.name}</h2>
               <ul className="grid grid-cols-1 gap-3 text-sm text-tertiary marker:text-2xl">
                 {myComponentList}
               </ul>
@@ -42,7 +57,7 @@ export default function CatCard() {
           </div>
           <div className="grid gap-8 text-sm leading-loose py-6">
             <p >
-              {description.description}
+              {payload.description}
             </p>
           </div>
           <form className="grid gap-4 md:gap-0 items-start border-solid bg-blue-300 rounded-lg p-2 shadow-xl">
