@@ -9,11 +9,11 @@ generator client {
 }
 
 model User {
-  id              Int       @id @default(autoincrement())
-  username        String    @unique
+  id              Int          @id @default(autoincrement())
+  username        String       @unique
   password        String
   phone           String
-  email           String    @unique
+  email           String       @unique
   firstname       String
   lastname        String
   middlename      String
@@ -24,14 +24,16 @@ model User {
   smspermission   Boolean
   orders          Order[]
   adressuser      AdressUser[]
+  Basket          Basket[]
+  Feedback        Feedback[]
 }
 
 model AdressUser {
-  id                 Int       @id @default(autoincrement())
-  user               User      @relation(fields: [userid], references: [id])
-  userid             Int       
+  id                 Int    @id @default(autoincrement())
+  user               User   @relation(fields: [userid], references: [id])
+  userid             Int
   order              Int
-  district           String  
+  district           String
   city_settlement    String
   city               String
   street             String
@@ -43,10 +45,10 @@ model AdressUser {
 }
 
 model AddressDelivery {
-  id                 Int       @id @default(autoincrement())
-  order              Order     @relation(fields: [orderid], references: [id])
-  orderid            Int       @unique
-  district           String  
+  id                 Int    @id @default(autoincrement())
+  order              Order  @relation(fields: [orderid], references: [id])
+  orderid            Int    @unique
+  district           String
   city_settlement    String
   city               String
   street             String
@@ -58,8 +60,8 @@ model AddressDelivery {
 }
 
 model Order {
-  id              Int       @id @default(autoincrement())
-  user            User      @relation(fields: [userid], references: [id])
+  id              Int              @id @default(autoincrement())
+  user            User             @relation(fields: [userid], references: [id])
   userid          Int
   DealDate        DateTime
   Cost            Float
@@ -72,22 +74,89 @@ model Order {
 }
 
 model OrderList {
-  id            Int       @id @default(autoincrement())
-  order         Order     @relation(fields: [orderid], references: [id])
-  orderid       Int
-  product       Product   @relation(fields: [productid], references: [id])
-  productid     Int
-  Price         Float
-  OrderStartT   DateTime
-  OrderEndT     DateTime
-  IsReviewLeft  Boolean
+  id           Int        @id @default(autoincrement())
+  order        Order      @relation(fields: [orderid], references: [id])
+  orderid      Int
+  product      Product    @relation(fields: [productid], references: [id])
+  productid    Int
+  Price        Float
+  OrderStartT  DateTime
+  OrderEndT    DateTime
+  IsReviewLeft Boolean
+  Feedback     Feedback[]
 }
 
 model Product {
-  id          Int       @id @default(autoincrement())
-  name        String
-  description String
-  isactive    Boolean
-  orderlist   OrderList[]
+  id                Int                 @id @default(autoincrement())
+  name              String
+  description       String
+  isactive          Boolean
+  orderlist         OrderList[]
+  specificationList SpecificationList[]
+  Photo             Photo[]
+  Feedback          Feedback[]
 }
 
+model Specification {
+  id                  Int                  @id @default(autoincrement())
+  name                String
+  type                String
+  isGuide             Boolean
+  description         String
+  isactive            Boolean
+  specificationValues SpecificationValue[]
+  SpecificationList   SpecificationList[]
+}
+
+model SpecificationValue {
+  id                Int                 @id @default(autoincrement())
+  specification     Specification       @relation(fields: [specificationid], references: [id])
+  specificationid   Int
+  value             String
+  order             Int
+  SpecificationList SpecificationList[]
+}
+
+model SpecificationList {
+  id                   Int                @id @default(autoincrement())
+  product              Product            @relation(fields: [productid], references: [id])
+  productid            Int
+  value                String
+  specification        Specification      @relation(fields: [specificationid], references: [id])
+  specificationid      Int
+  specificationvalue   SpecificationValue @relation(fields: [specificationvalueid], references: [id])
+  specificationvalueid Int
+  startdate            DateTime
+}
+
+model Basket {
+  id           Int      @id @default(autoincrement())
+  user         User     @relation(fields: [userid], references: [id])
+  userid       Int
+  DeliveryDate DateTime
+  RentTime     DateTime
+}
+
+model Photo {
+  id        Int        @id @default(autoincrement())
+  product   Product    @relation(fields: [productid], references: [id])
+  productid Int
+  photo     String
+  order     Int
+  Feedback  Feedback[]
+}
+
+model Feedback {
+  id          Int       @id @default(autoincrement())
+  product     Product   @relation(fields: [productid], references: [id])
+  productid   Int
+  user        User      @relation(fields: [userid], references: [id])
+  userid      Int
+  orderlist   OrderList @relation(fields: [orderlistid], references: [id])
+  orderlistid Int
+  anonymous   Boolean
+  rating      Int
+  text        String
+  photo       Photo     @relation(fields: [photoid], references: [id])
+  photoid     Int
+}
