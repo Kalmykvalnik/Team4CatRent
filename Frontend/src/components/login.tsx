@@ -4,6 +4,9 @@ import Link from 'next/link';
 
 import handleSubmit from "./../actions/login"
 
+import session from '@/actions/session';
+
+
 
 export default function LoginForm() {
   return (
@@ -18,6 +21,7 @@ export default function LoginForm() {
       <p className="text-xs">Нет аккаунта?
         <Link href="/registration" className="hover:underline text-blue-900"> Регистрация</Link>
       </p>
+      <button onClick={session()}>test</button>
     </div>
   )
 }

@@ -5,6 +5,7 @@ import "../../build.css"
 
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { Providers } from "@/components/common/Providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,11 +22,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="bg-white">
-          <Header></Header>
-          {children}
-          <Footer></Footer>
-        </div>
+
+          <div className="bg-white">
+            <Header></Header>
+            {children}
+            <Footer></Footer>
+          </div>
+
       </body>
     </html>
   );
