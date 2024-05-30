@@ -9,3 +9,14 @@ export const britanskaya_koshka =[
     {src: britanskaya_koshka_3, alt: 'third'},
     {src: britanskaya_koshka_4, alt: 'fourth'}
 ]
+
+export const catImg = [
+  britanskaya_koshka_1,
+  britanskaya_koshka_2,
+  britanskaya_koshka_3,
+  britanskaya_koshka_4,
+  britanskaya_koshka_1,
+  britanskaya_koshka_2,
+  britanskaya_koshka_3,
+  britanskaya_koshka_4
+]

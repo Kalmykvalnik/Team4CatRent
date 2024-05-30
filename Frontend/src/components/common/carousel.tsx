@@ -31,15 +31,15 @@ const Carousel = ({ catsShortInfo }: props) => {
 
     spaceBetween={20}
     grabCursor={true}
-    className='flex max-w-[1040px] justify-center min-h-[300px]'
+    className='flex grow max-w-[1040px] min-w-0 justify-center min-h-[300px]'
   >
     {catsShortInfo.map((cat, index) => {
       return (
-        <SwiperSlide key={index} className='flex max-w-[1100px] justify-center '>
+        <SwiperSlide key={index} className='flex grow min-w-0 max-w-[1100px] justify-center '>
           <div className='border-solid border-2 border-black flex max-w-[520px] min-h-[270px] justify-between '>
             <div className='flex  gap-4'>
-              <div className='flex p-2 justify-items-center'>
-                <Image src={cat.imgPrew} alt="cat_photo" height={230} width={287} className='flex object-cover min-h-[230px]'></Image>
+              <div className='flex p-4 justify-items-center'>
+                <Image src={cat.imgPrew} alt="cat_photo" height={230} width={287} className='flex grow min-w-0 object-cover min-h-[230px]'></Image>
               </div>
               <div className='flex max-w-[156px] m-2'>
                 <div className='grid'>

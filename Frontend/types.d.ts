@@ -49,3 +49,10 @@ interface Basket{
   RentTime: Date
   product: Product
 }
+
+interface catCard {
+    id: number;
+    name: string;
+    imgPrew: StaticImageData;
+    description: string;
+};

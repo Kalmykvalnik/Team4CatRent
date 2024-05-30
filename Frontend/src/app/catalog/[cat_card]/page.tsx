@@ -34,10 +34,12 @@ const myComponentList = characteristics.map((obj: any, index) => (
 
 
 
-export default async function CatCard({params: {cat_card}} : Props) {
+export default async function CatCard(cat_card: Props) {
+  const id = cat_card.params.cat_card
 
-  //console.log('console:'+ cat_card)
-  const payload = await GetProduct(cat_card);
+  //console.log(typeof(id.toString()))
+
+  const payload = await GetProduct(id);
   //console.log(payload)
 
   return (
