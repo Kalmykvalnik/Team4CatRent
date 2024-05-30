@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { StaticImageData } from "next/image"
-
+import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination } from 'swiper/modules'
 
@@ -18,10 +18,10 @@ type catShortInfo = {
 }
 
 type props = {
-  catsShortInfo: catShortInfo[]
+  catsShortInfo: catCard[]
 }
 
-const Carousel = ({ catsShortInfo }: props) => {
+const Carousel = ( catCard : catCard[]) => {
 
   return <Swiper
 
@@ -33,9 +33,9 @@ const Carousel = ({ catsShortInfo }: props) => {
     grabCursor={true}
     className='flex grow max-w-[1040px] min-w-0 justify-center min-h-[300px]'
   >
-    {catsShortInfo.map((cat, index) => {
+    {catCard.map((cat: catCard) => {
       return (
-        <SwiperSlide key={index} className='flex grow min-w-0 max-w-[1100px] justify-center '>
+        <SwiperSlide key={cat.id} className='flex grow min-w-0 max-w-[1100px] justify-center '>
           <div className='border-solid border-2 border-black flex max-w-[520px] min-h-[270px] justify-between '>
             <div className='flex  gap-4'>
               <div className='flex p-4 justify-items-center'>
@@ -44,9 +44,11 @@ const Carousel = ({ catsShortInfo }: props) => {
               <div className='flex max-w-[156px] m-2'>
                 <div className='grid'>
                   <h1 className='text-center p-2 flex justify-center self-center'>{cat.name}</h1>
-                  <span className=''>{cat.shortDescription}</span>
+                  <span className=''>{cat.description}</span>
                   <div className='flex self-center justify-center h-[40px]'>
-                    <button className="bg-[#0F57C2] hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-lg p-2  ">Выбрать</button>
+                    <Link href={`/catalog/${cat.id}`}>
+                      <button className="bg-[#0F57C2] hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-lg p-2  ">Подробнее</button>
+                    </Link>
                   </div>
                 </div>
               </div>

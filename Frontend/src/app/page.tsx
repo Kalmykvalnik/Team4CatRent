@@ -9,21 +9,24 @@ import { Carousel } from '@/components/common/carousel'
 
 import cardinal from "@images/cardinal.png"
 
-const mainCat1 = [
+const mainCat1: catCard[] = [
   {
+    id: 5,
     name: "Близнецы",
-    shortDescription: "Ласковая и игривая парочка которая не заставит вас скучать",
+    description: "Ласковая и игривая парочка которая не заставит вас скучать",
     imgPrew: cardinal
   },
 
   {
+    id:2,
     name: "Добряк",
-    shortDescription: "Большой и добрый мэйн-кун скрасит ваши выходные",
+    description: "Большой и добрый мэйн-кун скрасит ваши выходные",
     imgPrew: cardinal
   },
   {
+    id:4,
     name: "Красотка",
-    shortDescription: "Кокетка захватит ваше сердце и не оставит равнодушным никого",
+    description: "Кокетка захватит ваше сердце и не оставит равнодушным никого",
     imgPrew: cardinal
   }
 ]
@@ -49,7 +52,7 @@ export default async function Home() {
                 <h1 className="text-center text-3xl border-b-2 border-black p-5">Уникальное предложение</h1>
               </div>
               <div className="flex justify-center gap-6 m-5">
-                <Carousel catsShortInfo={mainCat1}></Carousel>
+                <Carousel catCard={mainCat1}></Carousel>
               </div>
               <div className="h-[100px] m-5">
                 <h1 className="text-center text-3xl border-b-2 border-t-2 border-black p-5">Католог котиков</h1>
