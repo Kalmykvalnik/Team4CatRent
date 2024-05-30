@@ -23,11 +23,13 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
 
-          <div className="bg-white">
-            <Header></Header>
+        <div className="bg-white">
+          <Header></Header>
+          <div>
             {children}
-            <Footer className="end-0"></Footer>
           </div>
+          <Footer className="end-0"></Footer>
+        </div>
 
       </body>
     </html>

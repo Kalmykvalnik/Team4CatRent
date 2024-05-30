@@ -3,12 +3,12 @@ import Link from "next/link";
 
 
 
-export default function CatMiniCard( {id, name, imgPrew} : catCard) {
+export default function CatMiniCard( {id, name,  src} : catCard) {
   return (
     <div className="grid border-solid border-2 border-black gap-4 p-4 w-[300px]">
       <Link href={`/catalog/${id}`}>
         <Image
-          src={imgPrew}
+          src={src}
           alt="cat_photo"
           height={230}
           width={287}

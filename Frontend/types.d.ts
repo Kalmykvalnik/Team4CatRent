@@ -53,6 +53,7 @@ interface Basket{
 interface catCard {
     id: number;
     name: string;
-    imgPrew: StaticImageData;
+    //imgPrew: StaticImageData;
+    src: string | StaticImageData;
     description: string;
 };

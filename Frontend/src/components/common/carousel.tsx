@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination } from 'swiper/modules'
 
+
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
@@ -21,9 +22,14 @@ type props = {
   catsShortInfo: catCard[]
 }
 
-const Carousel = ( catCard : catCard[]) => {
+const Carousel = ( {catsShortInfo} : props) => {
 
-  return <Swiper
+  if (typeof  window !== "undefined") {
+    console.log(window.innerWidth)
+  }
+  
+
+ return <Swiper
 
     pagination={{ type: 'bullets' }}
     modules={[Pagination]}
@@ -33,13 +39,13 @@ const Carousel = ( catCard : catCard[]) => {
     grabCursor={true}
     className='flex grow max-w-[1040px] min-w-0 justify-center min-h-[300px]'
   >
-    {catCard.map((cat: catCard) => {
+    {catsShortInfo.map((cat: catCard) => {
       return (
         <SwiperSlide key={cat.id} className='flex grow min-w-0 max-w-[1100px] justify-center '>
           <div className='border-solid border-2 border-black flex max-w-[520px] min-h-[270px] justify-between '>
             <div className='flex  gap-4'>
               <div className='flex p-4 justify-items-center'>
-                <Image src={cat.imgPrew} alt="cat_photo" height={230} width={287} className='flex grow min-w-0 object-cover min-h-[230px]'></Image>
+                <Image src={cat.src} alt="cat_photo" height={230} width={287} className='flex grow min-w-0 object-cover min-h-[230px]'></Image>
               </div>
               <div className='flex max-w-[156px] m-2'>
                 <div className='grid'>
