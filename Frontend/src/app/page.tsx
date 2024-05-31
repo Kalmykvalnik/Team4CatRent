@@ -36,10 +36,7 @@ const mainCat1: catCard[] = [
 export default async function Home() {
   const payload = await GetProducts();
 
-
   const cats2 = asign(payload, catImg)
-
-  
 
   return (
     <main className="">

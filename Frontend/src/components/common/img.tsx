@@ -10,6 +10,7 @@ import cat0004 from '@images/cat0004.png'
 import cat0005 from '@images/cat0005.jpg'
 import cat0006 from '@images/cat0006.jpg'
 import cat0007 from '@images/cat0007.jpg'
+import cat0008 from '@images/cat0008.jpg'
 
 
 export const britanskaya_koshka =[
@@ -28,5 +29,6 @@ export const catImg = [
   cat0004,
   cat0005,
   cat0006,
-  cat0007
+  cat0007,
+  cat0008
 ]
