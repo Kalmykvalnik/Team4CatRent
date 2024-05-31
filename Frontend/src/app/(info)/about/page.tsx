@@ -5,7 +5,7 @@ export default function About() {
         <div className="flex h-screen justify-center">
           <div>
             <p>
-              здесь будет информация о нас. Andrei.Agafonov.
+              здесь будет информация о нас.
             </p>
           </div>
         </div>

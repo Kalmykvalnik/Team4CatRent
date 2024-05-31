@@ -15,18 +15,27 @@ interface User{
     smspermission: boolean
 }
 
+interface Auth{
+  email: string
+  token: string
+  username: string
+}
+
+interface Reg{
+  id: number
+  email: string
+  username: string
+  token: string
+}
+
 interface Product{
-  status: string
   id: number
   name: string
   description: String
   isactive: boolean
 }
 
-interface Products{
-  status: string
-  result: [Product]
-}
+
 
 interface Order{
   id: number
@@ -47,3 +56,11 @@ interface Basket{
   RentTime: Date
   product: Product
 }
+
+interface catCard {
+    id: number;
+    name: string;
+    //imgPrew: StaticImageData;
+    src: string | StaticImageData;
+    description: string;
+};

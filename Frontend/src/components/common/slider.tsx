@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination } from 'swiper/modules'
 
-import { britanskaya_koshka } from '@/components/common/britanskaya_koshka'
+import { britanskaya_koshka } from '@/components/common/img'
 
 import 'swiper/css'
 import 'swiper/css/navigation'

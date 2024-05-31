@@ -7,6 +7,7 @@ export default function Nav() {
       <Link href="/catalog/" className="hover:underline">Каталог</Link>
       <Link href="/order/" className="hover:underline">Доставка</Link>
       <Link href="/about/" className="hover:underline">Контакты</Link>
+
     </div>
   </nav>
 }

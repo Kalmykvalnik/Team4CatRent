@@ -1,18 +1,17 @@
-export async function GetProducts(): Promise<Products> {
+export async function GetProducts(): Promise<Product[]> {
 
-  const res = await fetch('http://localhost:3003/api/product', {cache: 'no-store'});
+  const res = await fetch('http://localhost:3001/api/products/1', {cache: 'no-store'});
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
   const data = await res.json()
-  //console.log(res)
   return data
 }
 
-export async function GetProduct(): Promise<Product> {
+export async function GetProduct(id: string): Promise<Product> {
 
-  const res = await fetch('http://localhost:3003/api/product/${id}', {cache: 'no-store'});
+  const res = await fetch(`http://localhost:3001/api/product/${id}`, {cache: 'no-store'});
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");
