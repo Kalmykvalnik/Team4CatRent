@@ -50,11 +50,11 @@ export default async function Home() {
           </div>
           <div className="flex justify-center m-5">
             <div className="flex w-[300px]"></div>
-            <div className="flex flex-col">
+            <div className="flex flex-col min-w-0">
               <div className="h-[100px] m-5 ">
                 <h1 className="text-center text-3xl border-b-2 border-black p-5">Уникальное предложение</h1>
               </div>
-              <div className="flex justify-center gap-6 m-5">
+              <div className="flex justify-center min-w-0 gap-6 m-5">
                 <Carousel catsShortInfo={mainCat1}></Carousel>
               </div>
               <div className="h-[100px] m-5">

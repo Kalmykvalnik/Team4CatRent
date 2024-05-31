@@ -16,7 +16,7 @@ const navItems = [
   {label: "Католог", href: "/catalog"},
   {label: "Доставка", href: "/order"},
   {label: "Конткты", href: "/about"},
-  {label: "Вход", href: "/login"},
+  {label: "Вход", href: "/auth"},
 ]
 
 

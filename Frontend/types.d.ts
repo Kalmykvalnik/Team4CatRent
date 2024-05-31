@@ -21,6 +21,13 @@ interface Auth{
   username: string
 }
 
+interface Reg{
+  id: number
+  email: string
+  username: string
+  token: string
+}
+
 interface Product{
   id: number
   name: string
